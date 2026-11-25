@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARIA EDUARDA — Seu cuidado. Sua beleza. Seu momento.</title>
+  <meta name="description" content="MARIA EDUARDA — Você merece se olhar no espelho e amar o que vê. Estética facial, corporal, rejuvenescimento e tratamentos personalizados." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Scroll Progress Hairline & Right-Side HUD -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <aside class="progress-hud" id="progress-hud" aria-hidden="true">
+    <span class="progress-hud__index" id="progress-index">01</span>
+    <div class="progress-hud__track">
+      <div class="progress-hud__fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-hud__total">06</span>
+  </aside>
+
+  <!-- Custom Magnetic Cursor -->
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <span id="cursor-label">VER</span>
+  </div>
+
+  <!-- Editorial Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__brand">MARIA EDUARDA</div>
+    <div class="preloader__bar-wrap">
+      <div class="preloader__bar" id="preloader-bar"></div>
+    </div>
+    <div class="preloader__percent" id="preloader-percent">00%</div>
+  </div>
+
+  <!-- Persistent 3D Orchid Element (Klimt Wine Reference) -->
+  <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Editorial Header -->
+  <header class="site-header" id="site-header">
+    <a href="#hero" class="brand-mark" data-cursor="INÍCIO">
+      <span class="brand-mark__name">MARIA EDUARDA</span>
+      <span class="brand-mark__sub">Estética &amp; Autocuidado</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="#prioridade">Essência</a>
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#sentimento">Propósito</a>
+      <a href="#experiencia">Experiência</a>
+    </nav>
+
+    <button class="header-cta" data-open-modal="agendar" data-cursor="AGENDAR">
+      Agendar Avaliação
+    </button>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">Menu</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <button class="mobile-drawer__close" id="menu-close">Fechar</button>
+    <a href="#prioridade" class="drawer-link">Essência</a>
+    <a href="#tratamentos" class="drawer-link">Tratamentos</a>
+    <a href="#sentimento" class="drawer-link">Propósito</a>
+    <a href="#experiencia" class="drawer-link">Experiência</a>
+    <a href="#avaliacao" class="drawer-link">Agendar Avaliação</a>
+  </div>
+
+  <main id="smooth-content">
+    <!-- 1. HERO PRINCIPAL COM VÍDEO NO FUNDO (OPACIDADE BAIXA) + VÍDEO CENTRALIZADO + TEXTO NAS LATERAIS -->
+    <section class="hero" id="hero" data-section="01">
+      <video class="hero__bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__ambient-bg" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero__split">
+          <!-- TEXTO À ESQUERDA -->
+          <div class="hero__left">
+            <div class="eyebrow hero-anim">Maria Eduarda · Autocuidado</div>
+            <h1 class="editorial-title hero__title hero-anim">
+              VOCÊ MERECE SE OLHAR NO ESPELHO E <em>AMAR O QUE VÊ.</em>
+            </h1>
+          </div>
+
+          <!-- VÍDEO CENTRALIZADO -->
+          <div class="hero__center hero-anim" data-cursor="ESSÊNCIA">
+            <div class="hero__video-frame">
+              <video class="hero__video" autoplay muted loop playsinline preload="auto">
+                <source src="assets/hero-video.mp4" type="video/mp4" />
+              </video>
+              <div class="hero__video-vignette"></div>
+            </div>
+            <div class="hero__orbit-ring" aria-hidden="true"></div>
+          </div>
+
+          <!-- TEXTO E CTA À DIREITA -->
+          <div class="hero__right">
+            <p class="hero__lead hero-anim">
+              Não é sobre mudar quem você é. É sobre cuidar de si, valorizar sua beleza e se sentir ainda mais confiante na própria pele.
+            </p>
+            <p class="hero__sub hero-anim">
+              Aqui, cada detalhe é pensado para que você tenha uma experiência de cuidado que vai muito além da estética.
+            </p>
+            <div class="hero-anim">
+              <a href="#tratamentos" class="btn-luxury btn-luxury--gold magnetic" data-cursor="EXPLORAR">
+                <span>QUERO ME CUIDAR</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint">
+        <div class="hero__scroll-line"></div>
+        <span>Role para descobrir</span>
+      </div>
+    </section>
+
+    <!-- KINETIC MARQUEE (ADDICT-INSPIRED) -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          ESTÉTICA FACIAL <span class="star">✦</span>
+          ESTÉTICA CORPORAL <span class="star">✦</span>
+          REJUVENESCIMENTO <span class="star">✦</span>
+          TRATAMENTOS PERSONALIZADOS <span class="star">✦</span>
+          AUTOCUIDADO <span class="star">✦</span>
+        </div>
+        <div class="marquee-item">
+          ESTÉTICA FACIAL <span class="star">✦</span>
+          ESTÉTICA CORPORAL <span class="star">✦</span>
+          REJUVENESCIMENTO <span class="star">✦</span>
+          TRATAMENTOS PERSONALIZADOS <span class="star">✦</span>
+          AUTOCUIDADO <span class="star">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. E SE VOCÊ COMEÇASSE A SE COLOCAR EM PRIMEIRO LUGAR? (KLIMT: FOTO À ESQUERDA, TEXTO À DIREITA) -->
+    <section class="section-priority klimt-section" id="prioridade" data-section="02">
+      <div class="klimt-ornament" aria-hidden="true"></div>
+      <div class="container">
+        <div class="klimt-stage klimt-stage--right">
+
+          <!-- ESQUERDA: Foto editorial grande -->
+          <div class="klimt-stage__visual">
+            <div class="photo-feature-card photo-feature-card--tall scroll-card" data-cursor="AMBIENTE">
+              <div class="photo-feature-card__media">
+                <img src="assets/spa-sanctuary.jpg" alt="Ambiente acolhedor da clínica Maria Eduarda" />
+              </div>
+              <div class="photo-feature-card__overlay">
+                <span class="photo-feature-card__index">01</span>
+                <p class="photo-feature-card__caption">Tempo para você, sem pressa e sem culpa.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIREITA: Texto editorial -->
+          <div class="klimt-stage__content">
+            <div class="eyebrow">01 / Prioridade &amp; Rotina</div>
+            <h2 class="editorial-title priority__title">
+              E SE VOCÊ COMEÇASSE A SE COLOCAR EM <em>PRIMEIRO LUGAR?</em>
+            </h2>
+            <div class="editorial-prose">
+              <p>
+                Entre tantos compromissos, responsabilidades e tarefas, é fácil deixar o autocuidado para depois.
+              </p>
+              <p>
+                Mas cuidar de você também precisa fazer parte da sua rotina.
+              </p>
+              <p>
+                Seja para melhorar a aparência da pele, cuidar dos detalhes que incomodam ou simplesmente dedicar um tempo a si mesma, você merece esse momento.
+              </p>
+              <p class="highlight-quote">
+                Afinal, não existe nada mais bonito do que se sentir bem sendo você.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="klimt-divider" aria-hidden="true"><span>✦</span></div>
+
+    <!-- 3. UM CUIDADO PARA CADA VERSÃO DE VOCÊ (KLIMT ALTERNATING EDITORIAL PHOTO CARDS) -->
+    <section class="section-treatments klimt-section" id="tratamentos" data-section="03">
+      <div class="container">
+        <div class="klimt-center-head">
+          <div class="eyebrow reveal-up">02 / Protocolos &amp; Cuidados</div>
+          <h2 class="editorial-title treatments-header__title reveal-up">
+            UM CUIDADO PARA CADA <em>VERSÃO DE VOCÊ.</em>
+          </h2>
+          <p class="klimt-center-head__sub reveal-up">
+            Cada pessoa tem uma beleza única. E cada fase da vida traz novos desejos, necessidades e possibilidades. Por isso, existem diferentes formas de cuidar de você.
+          </p>
+        </div>
+
+        <div class="treatments-grid klimt-grid">
+          <article class="treatment-card treatment-card--photo scroll-card" data-treatment="ESTÉTICA FACIAL" data-cursor="ESCOLHER">
+            <div class="treatment-card__media">
+              <img src="assets/facial-care.jpg" alt="Estética Facial" />
+              <div class="treatment-card__scrim"></div>
+            </div>
+            <div class="treatment-card__body">
+              <div class="treatment-card__top">
+                <span class="treatment-card__num">01</span>
+                <span class="treatment-card__icon" aria-hidden="true">✦</span>
+              </div>
+              <div>
+                <h3 class="treatment-card__title">ESTÉTICA FACIAL</h3>
+                <p class="treatment-card__desc">
+                  Uma pele bem cuidada faz diferença na forma como você se sente. Descubra tratamentos para cuidar da textura, luminosidade e aparência da sua pele.
+                </p>
+                <span class="treatment-card__more">Explorar cuidado →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="treatment-card treatment-card--photo scroll-card" data-treatment="ESTÉTICA CORPORAL" data-cursor="ESCOLHER">
+            <div class="treatment-card__media">
+              <img src="assets/spa-sanctuary.jpg" alt="Estética Corporal" />
+              <div class="treatment-card__scrim"></div>
+            </div>
+            <div class="treatment-card__body">
+              <div class="treatment-card__top">
+                <span class="treatment-card__num">02</span>
+                <span class="treatment-card__icon" aria-hidden="true">◈</span>
+              </div>
+              <div>
+                <h3 class="treatment-card__title">ESTÉTICA CORPORAL</h3>
+                <p class="treatment-card__desc">
+                  Sinta-se mais confortável com seu corpo e descubra possibilidades de cuidado que valorizam seus contornos e sua autoestima.
+                </p>
+                <span class="treatment-card__more">Explorar cuidado →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="treatment-card treatment-card--photo scroll-card" data-treatment="REJUVENESCIMENTO" data-cursor="ESCOLHER">
+            <div class="treatment-card__media">
+              <img src="assets/editorial-portrait.png" alt="Rejuvenescimento" />
+              <div class="treatment-card__scrim"></div>
+            </div>
+            <div class="treatment-card__body">
+              <div class="treatment-card__top">
+                <span class="treatment-card__num">03</span>
+                <span class="treatment-card__icon" aria-hidden="true">✧</span>
+              </div>
+              <div>
+                <h3 class="treatment-card__title">REJUVENESCIMENTO</h3>
+                <p class="treatment-card__desc">
+                  O tempo faz parte da nossa história. Cuidar da pele é uma forma de acompanhar cada fase com mais confiança e bem-estar.
+                </p>
+                <span class="treatment-card__more">Explorar cuidado →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="treatment-card treatment-card--photo scroll-card" data-treatment="TRATAMENTOS PERSONALIZADOS" data-cursor="ESCOLHER">
+            <div class="treatment-card__media">
+              <img src="assets/ritual-detail.jpg" alt="Tratamentos Personalizados" />
+              <div class="treatment-card__scrim"></div>
+            </div>
+            <div class="treatment-card__body">
+              <div class="treatment-card__top">
+                <span class="treatment-card__num">04</span>
+                <span class="treatment-card__icon" aria-hidden="true">❖</span>
+              </div>
+              <div>
+                <h3 class="treatment-card__title">TRATAMENTOS PERSONALIZADOS</h3>
+                <p class="treatment-card__desc">
+                  Seu corpo, sua pele e seus objetivos merecem atenção individual. Encontre os cuidados mais adequados para você.
+                </p>
+                <span class="treatment-card__more">Explorar cuidado →</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="treatments-cta-wrap reveal-up">
+          <button class="btn-luxury magnetic" data-open-modal="tratamento" data-cursor="DESCOBRIR">
+            <span>ENCONTRE SEU TRATAMENTO</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. NÃO É VAIDADE. É SOBRE COMO VOCÊ SE SENTE. (KLIMT DARK ARCH STAGE) -->
+    <section class="section-dark klimt-section" id="sentimento" data-section="04">
+      <div class="klimt-ornament klimt-ornament--dark" aria-hidden="true"></div>
+      <div class="container">
+        <div class="vaidade-grid">
+          <div class="portrait-frame sticky-media reveal-up" data-cursor="BELEZA">
+            <div class="portrait-arch">
+              <img src="assets/editorial-portrait.png" alt="Mulher confiante e serena em tons de marrom e dourado" />
+            </div>
+            <div class="portrait-badge">Beleza com Propósito</div>
+          </div>
+
+          <div>
+            <div class="eyebrow reveal-up">03 / Autoestima Real</div>
+            <h2 class="editorial-title vaidade-title reveal-up">
+              NÃO É VAIDADE. É SOBRE <em>COMO VOCÊ SE SENTE.</em>
+            </h2>
+
+            <div class="statement-cards">
+              <div class="statement-card scroll-card">
+                <span class="statement-card__num">01</span>
+                <p>É sobre voltar a tirar aquela foto sem procurar defeitos.</p>
+              </div>
+              <div class="statement-card scroll-card">
+                <span class="statement-card__num">02</span>
+                <p>É sobre se arrumar e gostar do resultado.</p>
+              </div>
+              <div class="statement-card scroll-card">
+                <span class="statement-card__num">03</span>
+                <p>É sobre perceber que você também merece atenção, carinho e cuidado.</p>
+              </div>
+            </div>
+
+            <div class="vaidade-body">
+              <p class="reveal-up">
+                A estética pode ser parte dessa transformação, não para atender às expectativas de outras pessoas, mas para ajudar você a se sentir bem com suas próprias escolhas.
+              </p>
+              <p class="reveal-up">
+                E é exatamente assim que queremos que você viva cada experiência aqui.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SEU MOMENTO DE AUTOCUIDADO COMEÇA AQUI. (KLIMT STAGE: TEXTO À ESQUERDA + FOTO EDITORIAL À DIREITA) -->
+    <section class="section-experience klimt-section" id="experiencia" data-section="05">
+      <div class="container">
+        <div class="klimt-stage klimt-stage--left">
+          <!-- ESQUERDA: Texto + Sensory Pills -->
+          <div class="klimt-stage__content">
+            <div class="eyebrow">04 / Acolhimento &amp; Experiência</div>
+            <h2 class="editorial-title experience-title">
+              SEU MOMENTO DE AUTOCUIDADO <em>COMEÇA AQUI.</em>
+            </h2>
+            <div class="editorial-prose">
+              <p class="reveal-up">
+                Imagine chegar a um lugar onde você é ouvida, acolhida e recebe atenção de verdade.
+              </p>
+              <p class="reveal-up">
+                Onde seus desejos são respeitados, suas dúvidas são esclarecidas e cada tratamento é pensado considerando o que realmente faz sentido para você.
+              </p>
+              <p class="reveal-up">
+                É essa experiência que queremos proporcionar.
+              </p>
+              <p class="highlight-quote">
+                Porque cuidar da sua beleza também significa cuidar de como você se sente.
+              </p>
+            </div>
+
+            <div class="sensory-pills">
+              <div class="sensory-pill scroll-card">
+                <img class="sensory-pill__thumb" src="assets/spa-sanctuary.jpg" alt="" />
+                <div class="sensory-pill__info">
+                  <span class="sensory-pill__title">Escuta Ativa</span>
+                  <span class="sensory-pill__tag">Sem pressa</span>
+                </div>
+              </div>
+              <div class="sensory-pill scroll-card">
+                <img class="sensory-pill__thumb" src="assets/facial-care.jpg" alt="" />
+                <div class="sensory-pill__info">
+                  <span class="sensory-pill__title">Olhar Individual</span>
+                  <span class="sensory-pill__tag">Sob medida</span>
+                </div>
+              </div>
+              <div class="sensory-pill scroll-card">
+                <img class="sensory-pill__thumb" src="assets/ritual-detail.jpg" alt="" />
+                <div class="sensory-pill__info">
+                  <span class="sensory-pill__title">Naturalidade &amp; Conforto</span>
+                  <span class="sensory-pill__tag">Sua essência</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIREITA: Foto editorial tipo Klimt Wine -->
+          <div class="klimt-stage__visual">
+            <div class="photo-feature-card photo-feature-card--tall scroll-card" data-cursor="CUIDADO">
+              <div class="photo-feature-card__media">
+                <img src="assets/facial-care.jpg" alt="Cuidado facial delicado sob luz dourada" />
+              </div>
+              <div class="photo-feature-card__overlay">
+                <span class="photo-feature-card__index">04</span>
+                <p class="photo-feature-card__caption">Escuta acolhedora e cuidado individualizado.</p>
+              </div>
+            </div>
+            <div class="klimt-photo-strip scroll-card" data-cursor="RITUAL">
+              <img src="assets/spa-sanctuary.jpg" alt="Ambiente da clínica Maria Eduarda" />
+              <div class="klimt-photo-strip__cap">
+                <span>✦</span>
+                <p>Um espaço pensado para você.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. VAMOS DESCOBRIR O QUE FAZ SENTIDO PARA VOCÊ? -->
+    <section class="section-evaluation" id="avaliacao" data-section="06">
+      <div class="container">
+        <div class="evaluation-card evaluation-split reveal-up">
+          <div>
+            <div class="eyebrow">05 / Ponto de Partida</div>
+            <h2 class="editorial-title evaluation-card__title">
+              VAMOS DESCOBRIR O QUE FAZ <em>SENTIDO PARA VOCÊ?</em>
+            </h2>
+            <p class="evaluation-card__text">
+              Você não precisa saber exatamente qual procedimento fazer. Esse é o nosso ponto de partida.
+            </p>
+            <p class="evaluation-card__text">
+              Agende uma avaliação, converse com nossa equipe e descubra quais possibilidades combinam com seus objetivos.
+            </p>
+            <div class="evaluation-card__cta">
+              <button class="btn-luxury magnetic" data-open-modal="agendar" data-cursor="AVALIAÇÃO">
+                <span>QUERO AGENDAR MINHA AVALIAÇÃO</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="editorial-photo editorial-photo--square" data-cursor="RITUAL">
+            <img src="assets/ritual-detail.jpg" alt="Orquídea bege e gota de sérum dourado sobre pedra travertino" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. UM LEMBRETE FINAL (KLIMT STAGE: TEXTO À ESQUERDA + IMAGEM EDITORIAL À DIREITA) -->
+    <section class="section-final klimt-section" id="lembrete">
+      <div class="klimt-ornament klimt-ornament--dark" aria-hidden="true"></div>
+      <div class="container">
+        <div class="final-klimt-stage">
+          <!-- ESQUERDA: Conteúdo -->
+          <div class="final-content">
+            <div class="eyebrow reveal-up">06 / Para Hoje</div>
+            <h2 class="editorial-title final-title reveal-up">
+              UM LEMBRETE: VOCÊ TAMBÉM MERECE SER <em>SUA PRIORIDADE.</em>
+            </h2>
+            <div class="final-lines reveal-up">
+              <p>Não espere uma ocasião especial para cuidar de você.</p>
+              <p>Não espere encontrar o momento perfeito.</p>
+              <p>Comece pelo que faz você se sentir bem hoje.</p>
+              <p><strong>Estamos esperando por você!</strong></p>
+            </div>
+            <div class="reveal-up">
+              <button class="btn-luxury btn-luxury--gold magnetic" data-open-modal="whatsapp" data-cursor="WHATSAPP">
+                <span>AGENDE SEU HORÁRIO PELO WHATSAPP</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- DIREITA: Editorial Photo + Dupla Imagem -->
+          <div class="final-visual reveal-up">
+            <div class="final-portrait-wrap scroll-card" data-cursor="BELEZA">
+              <div class="final-portrait-arch">
+                <img src="assets/editorial-portrait.png" alt="Mulher confiante, serena e radiante" />
+              </div>
+              <div class="final-portrait-badge">Maria Eduarda · Estética</div>
+            </div>
+            <div class="final-strip scroll-card" data-cursor="RITUAL">
+              <img src="assets/ritual-detail.jpg" alt="Detalhe floral com sérum dourado sobre travertino" />
+              <div class="final-strip__cap">Orquídea &amp; Sérum Dourado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <footer class="site-footer">          <div class="footer-top">
+            <div>
+              <div class="footer-brand">MARIA EDUARDA</div>
+              <p class="footer-tagline">Seu cuidado. Sua beleza. Seu momento.</p>
+            </div>
+            <button class="header-cta" data-open-modal="whatsapp" data-cursor="WHATSAPP">
+              Falar com a equipe
+            </button>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <span class="footer-col__label">Navegação</span>
+              <a href="#hero">Início</a>
+              <a href="#prioridade">Essência</a>
+              <a href="#tratamentos">Tratamentos</a>
+              <a href="#sentimento">Propósito</a>
+              <a href="#experiencia">Experiência</a>
+            </div>
+
+            <div class="footer-col">
+              <span class="footer-col__label">Protocolos</span>
+              <a href="#tratamentos" data-open-modal="tratamento">Estética Facial</a>
+              <a href="#tratamentos" data-open-modal="tratamento">Estética Corporal</a>
+              <a href="#tratamentos" data-open-modal="tratamento">Rejuvenescimento</a>
+              <a href="#tratamentos" data-open-modal="tratamento">Personalizados</a>
+            </div>
+
+            <div class="footer-col">
+              <span class="footer-col__label">Atendimento</span>
+              <a href="#avaliacao">Agendar Avaliação</a>
+              <a href="javascript:void(0)" data-open-modal="whatsapp">Atendimento via WhatsApp</a>
+              <span class="footer-col__note">Cuidado individualizado com hora marcada</span>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <span>© 2026 MARIA EDUARDA — Estética &amp; Autocuidado</span>
+            <button type="button" class="footer-top-btn" id="back-to-top">
+              Voltar ao topo ↑
+            </button>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Matchmaker / WhatsApp Modal -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Fechar janela">✕</button>
+      <div class="eyebrow" style="margin-bottom: 0.75rem;">Atendimento Personalizado</div>
+      <h3 class="modal-title" id="modal-title">Encontre seu cuidado ideal</h3>
+      <p class="modal-desc" id="modal-desc">
+        Selecione o que mais combina com o que você busca hoje para iniciarmos sua conversa pelo WhatsApp.
+      </p>
+
+      <div class="option-chips" id="modal-chips">
+        <button type="button" class="option-chip is-selected" data-value="Estética Facial">Estética Facial</button>
+        <button type="button" class="option-chip" data-value="Estética Corporal">Estética Corporal</button>
+        <button type="button" class="option-chip" data-value="Rejuvenescimento">Rejuvenescimento</button>
+        <button type="button" class="option-chip" data-value="Avaliação Personalizada">Ainda não sei, quero uma avaliação</button>
+      </div>
+
+      <a id="modal-whatsapp-link" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20para%20Est%C3%A9tica%20Facial." target="_blank" rel="noopener noreferrer" class="btn-luxury btn-luxury--gold" style="width: 100%; justify-content: center;">
+        <span>CONTINUAR PARA O WHATSAPP</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
+
